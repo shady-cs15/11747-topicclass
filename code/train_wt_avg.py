@@ -34,8 +34,8 @@ if __name__ == '__main__':
 
     scores = list()
     for t in range(time_steps):
-        emb_features1 = tf.nn.tanh(tf.matmul(input_data[t, :, :], weight_fn_params['w1']) + weight_fn_params['b1'])
-        score = tf.nn.sigmoid(tf.matmul(emb_features1, weight_fn_params['w2']) + weight_fn_params['b2'])
+        emb_features1 = tf.nn.tanh(tf.matmul(input_data[t, :, :], weight_fn_params['w1']))# + weight_fn_params['b1'])
+        score = tf.nn.sigmoid(tf.matmul(emb_features1, weight_fn_params['w2']))# + weight_fn_params['b2'])
         scores.append(score)
     scores = tf.stack(scores)
     sent_emb = tf.reduce_mean(input_data*scores, axis=0)
